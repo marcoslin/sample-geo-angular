@@ -1,0 +1,26 @@
+{
+    "name": "sample-geo-angular",
+    "version": "0.1.0",
+    "homepage": "https://github.com/marcoslin/sample-geo-angular",
+    "authors": [
+        "Marcos Lin <marcos.lin@farport.co.uk>"
+    ],
+    "description": "Sample Geolocation app with AngularJS",
+    "main": "index.html",
+    "keywords": [
+        "AngularJS", "Google Maps", "Open Street Map"
+    ],
+    "license": "MIT",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "angular": "1.2.14",
+        "angular-route": "1.2.14"
+    }
+}

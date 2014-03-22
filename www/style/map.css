@@ -1,0 +1,23 @@
+
+.maps {
+    width: 100%;
+    height: 100%;
+}
+
+.maps #openstreetmap {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.maps #googlemap {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.maps #hybridmap {
+    display: none;
+    width: 100%;
+    height: 100%;
+}

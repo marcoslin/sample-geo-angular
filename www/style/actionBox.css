@@ -1,0 +1,132 @@
+.actionBox {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 900;
+    max-width: 80%;
+    font-size: 0.7em;
+    background: white;
+    border-radius: 0 0 0 2em;
+    border-width: 0 0 0.2em 0.1em;
+    border-style: solid;
+    border-color: lightskyblue;
+    padding: 1em;
+}
+
+
+
+/*
+ * TABS
+ */
+
+.actionBox .tabs {
+    padding: 0.5em;
+    background: white;
+}
+
+.actionBox .tabs ul {
+    list-style: none;
+    padding:0;
+    margin:0;
+}
+
+.actionBox .tabs ul li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+.actionBox .tabs ul li a {
+    color: navy;
+    text-decoration: none;
+    background: lightskyblue;
+    margin: 0;
+    padding: 0.7em 0.1em 0.7em 0.1em;
+    border: 0.1em solid navy;
+}
+.actionBox .tabs ul li a:target {
+    color: white;
+    background: navy;
+}
+.actionBox .tabs ul li:nth-child(1) a {
+    border-radius: 1em 0 0 1em;
+}
+.actionBox .tabs ul li:nth-child(2) a {
+}
+.actionBox .tabs ul li:nth-child(3) a {
+    border-radius: 0 1em 1em 0;
+}
+
+
+
+/*
+ * GEOLOCATION
+ */
+
+.actionBox > div.geolocation {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.actionBox > div.geolocation .currentPositionBtn {
+    display: block;
+    float: left;
+    font-size: 2rem;
+    margin: 0.6rem 0.6rem 0 0;
+}
+
+.actionBox > div.geolocation .positionOptions input[type="checkbox"]{
+}
+
+.actionBox > div.geolocation .positionOptions label {
+    cursor: pointer;
+}
+
+.actionBox > div.geolocation .positionOptions input[type="text"]{
+    display: block;
+    width: 60%;
+}
+
+
+
+/*
+ * SEARCH BOX
+ */
+
+.actionBox > div.searchBox {
+}
+
+.actionBox > div.searchBox #nominatimSearch {
+    display:none;
+    width: 100%;
+}
+
+.actionBox > div.searchBox #nominatimSearch input {
+    height: 2.4em;
+    width: 97%;
+}
+
+.actionBox > div.searchBox #nominatimSearch button {
+    width: 100%;
+    background: navy;
+    color: white;
+}
+
+.actionBox > div.searchBox #googleSearch {
+    display:none;
+    width: 100%;
+}
+
+.actionBox > div.searchBox #googleSearch input{
+    height: 2.4em;
+    width: 100%;
+}
+
+.actionBox > div.searchBox #hybridSearch {
+    display:none;
+    width: 100%;
+}
+
+.actionBox > div.searchBox #hybridSearch input{
+    height: 2.4em;
+    width: 100%;
+}

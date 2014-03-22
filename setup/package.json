@@ -1,0 +1,31 @@
+{
+	"name": "sample-geo-angular",
+	"version": "0.1.0",
+	"description": "Sample Geolocation app with AngularJS",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:marcoslin/sample-geo-angular.git"
+	},
+	"keywords": [
+        "AngularJS", "Google Maps", "Open Street Map"
+	],
+	"author": "Marcos Lin",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/marcoslin/sample-geo-angular/issues"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"grunt": "~0.4.1",
+		"grunt-contrib-copy": "~0.4.1",
+        "grunt-sync": "~0.0.5",
+		"grunt-bower-task": "~0.3.2",
+        "grunt-contrib-connect": "~0.7.1",
+		"grunt-contrib-watch": "~0.5.3",
+        "grunt-preprocess": "~3.0.0",
+		"load-grunt-tasks": "~0.1.0"
+	},
+	"scripts": {
+		"test": "grunt test"
+	}
+}

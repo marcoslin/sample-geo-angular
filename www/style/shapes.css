@@ -1,0 +1,57 @@
+
+.currentPositionBtn {
+    display: block;
+    position: relative;
+    font-size: 1.5rem;
+    width: 1em;
+    height: 1em;
+    background: white;
+    border: 0.2em solid lightskyblue;
+    border-radius: 0.7em;
+}
+.currentPositionBtn:hover {
+    background: navy;
+}
+
+.currentPositionBtn .north {
+    position: absolute;
+    top: 0em;
+    left: 0.45em;
+    width: 0.1em;
+    height: 0.3em;
+    background: lightskyblue;
+}
+
+.currentPositionBtn .north {
+    position: absolute;
+    top: 0;
+    left: 0.45em;
+    width: 0.1em;
+    height: 0.3em;
+    background: lightskyblue;
+}
+.currentPositionBtn .east {
+    position: absolute;
+    top: 0.45em;
+    right: 0;
+    width: 0.3em;
+    height: 0.1em;
+    background: lightskyblue;
+}
+.currentPositionBtn .south {
+    position: absolute;
+    bottom: 0;
+    left: 0.45em;
+    width: 0.1em;
+    height: 0.3em;
+    background: lightskyblue;
+}
+.currentPositionBtn .west {
+    position: absolute;
+    top: 0.45em;
+    left: 0;
+    width: 0.3em;
+    height: 0.1em;
+    background: lightskyblue;
+}
+

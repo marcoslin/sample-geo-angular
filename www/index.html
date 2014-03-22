@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Geo</title>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+        <meta charset="utf-8">
+        <link href="style/root.css" type="text/css" rel="stylesheet">
+        <link href="style/shapes.css" type="text/css" rel="stylesheet">
+        <link href="style/actionBox.css" type="text/css" rel="stylesheet">
+        <link href="style/map.css" type="text/css" rel="stylesheet">
+    </head>
+    <body ng-app="geoapp">
+        <div class="actionBox">
+            <div class="tabs">
+                <ul>
+                    <li>
+                        <a id="showOpenStreetMap" href="#/showOpenStreetMap">OpenStreetMap</a>
+                    </li><li>
+                        <a id="showGoogleMap" href="#/showGoogleMap">GoogleMap</a>
+                    </li><li>
+                        <a id="showHybridMap" href="#/showHybridMap">HybridMap</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="geolocation">
+                <a id="currentPositionBtn" href="javascript:;">
+                    <div class="currentPositionBtn">
+                        <div class="north"></div>
+                        <div class="east"></div>
+                        <div class="south"></div>
+                        <div class="west"></div>
+                    </div>
+                </a>
+                <div class="positionOptions">
+                    <input id="enableHighAccuracy" type="checkbox" checked><label for="enableHighAccuracy">enableHighAccuracy</label>
+                    <input id="timeout" type="text" placeholder="timeout (8000 ms)">
+                    <input id="maximumAge" type="text" placeholder="maximumAge (0 ms)">
+                </div>
+            </div>
+            <div class="searchBox">
+                <div>
+                    <div id="nominatimSearch">
+                        <form>
+                            <input placeholder="Nominatim Search" autocomplete="on" />
+                            <button id="searchBtn">Search</button>
+                        </form>
+                    </div>
+                    <div id="googleSearch">
+                        <input placeholder="Google Search" autocomplete="off" />
+                    </div>
+                    <div id="hybridSearch">
+                        <input placeholder="Google Search" autocomplete="off" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-view class="maps"></div>
+
+        <script src="http://openlayers.org/api/OpenLayers.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+        
+        <script src="js/ext/angular.js"></script>
+        <script src="js/ext/angular-route.js"></script>
+        
+        <script src="js/app.js"></script>
+        <script src="js/controller/openstreetmap.js"></script>
+        <script src="js/controller/googlemap.js"></script>
+        <script src="js/controller/hybridmap.js"></script>
+        
+    </body>
+</html>
