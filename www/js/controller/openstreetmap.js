@@ -4,7 +4,8 @@ angular.module("geoapp")
     $scope.fs = {
         hideButton: false,
         autocomplete: "on",
-        showOpenStreetMap_class: "active"
+        showOpenStreetMap_class: "active",
+        map_class: "openstreetmap"
     };
     
     // Search
@@ -18,5 +19,5 @@ angular.module("geoapp")
         }
     }
     
-    OpenStreetMap.initMap("openstreetmap");
+    OpenStreetMap.initMap("mapCanvas");
 }]);
