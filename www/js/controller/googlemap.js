@@ -10,7 +10,7 @@ angular.module("geoapp")
     
     // Define search
     function searchAction() {
-        $log.log("Search called");
+        GoogleMap.search();
     };
     
     GoogleMap.initMap("mapCanvas");
