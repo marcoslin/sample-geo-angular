@@ -1,0 +1,34 @@
+<div class="actionBox">
+    <div class="tabs">
+        <ul>
+            <li>
+                <a id="showOpenStreetMap" ng-class="fs.showOpenStreetMap_class" href="#/showOpenStreetMap">OpenStreetMap</a>
+            </li><li>
+                <a id="showGoogleMap" ng-class="fs.showGoogleMap_class" href="#/showGoogleMap">GoogleMap</a>
+            </li><li>
+                <a id="showHybridMap" ng-class="fs.showHybridMap_class" href="#/showHybridMap">HybridMap</a>
+            </li>
+        </ul>
+    </div>
+    <div class="geolocation">
+        <a id="currentPositionBtn" href="javascript:;">
+            <div class="currentPositionBtn">
+                <div class="north"></div>
+                <div class="east"></div>
+                <div class="south"></div>
+                <div class="west"></div>
+            </div>
+        </a>
+        <div class="positionOptions">
+            <input id="enableHighAccuracy" type="checkbox" checked><label for="enableHighAccuracy">enableHighAccuracy</label>
+            <input id="timeout" type="text" placeholder="timeout (8000 ms)">
+            <input id="maximumAge" type="text" placeholder="maximumAge (0 ms)">
+        </div>
+    </div>
+    <div class="searchBox">
+        <input ng-model="searchAddress" placeholder="Search Address" autocomplete="{{fs.autocomplete}}" />
+        <button ng-hide="fs.hideButton" ng-click="searchAction()">Search</button>
+    </div>
+</div>
+
+<div id="openstreetmap"></div>

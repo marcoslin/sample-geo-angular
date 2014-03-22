@@ -43,7 +43,7 @@
     padding: 0.7em 0.1em 0.7em 0.1em;
     border: 0.1em solid navy;
 }
-.actionBox .tabs ul li a:target {
+.actionBox .tabs ul li a.active {
     color: white;
     background: navy;
 }
@@ -93,40 +93,16 @@
  */
 
 .actionBox > div.searchBox {
+    display: block;
 }
 
-.actionBox > div.searchBox #nominatimSearch {
-    display:none;
-    width: 100%;
-}
-
-.actionBox > div.searchBox #nominatimSearch input {
+.actionBox > div.searchBox input {
     height: 2.4em;
     width: 97%;
 }
 
-.actionBox > div.searchBox #nominatimSearch button {
+.actionBox > div.searchBox button {
     width: 100%;
     background: navy;
     color: white;
-}
-
-.actionBox > div.searchBox #googleSearch {
-    display:none;
-    width: 100%;
-}
-
-.actionBox > div.searchBox #googleSearch input{
-    height: 2.4em;
-    width: 100%;
-}
-
-.actionBox > div.searchBox #hybridSearch {
-    display:none;
-    width: 100%;
-}
-
-.actionBox > div.searchBox #hybridSearch input{
-    height: 2.4em;
-    width: 100%;
 }
