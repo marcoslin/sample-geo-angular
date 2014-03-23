@@ -11,7 +11,7 @@
         </ul>
     </div>
     <div class="geolocation">
-        <a id="currentPositionBtn" href="javascript:;">
+        <a id="currentPositionBtn" ng-click="getGeolocation()">
             <div class="currentPositionBtn">
                 <div class="north"></div>
                 <div class="east"></div>
@@ -20,9 +20,9 @@
             </div>
         </a>
         <div class="positionOptions">
-            <input id="enableHighAccuracy" type="checkbox" checked><label for="enableHighAccuracy">enableHighAccuracy</label>
-            <input id="timeout" type="text" placeholder="timeout (8000 ms)">
-            <input id="maximumAge" type="text" placeholder="maximumAge (0 ms)">
+            <input id="enableHighAccuracy" type="checkbox" ng-model="enableHighAccuracy"><label for="enableHighAccuracy">enableHighAccuracy</label>
+            <input id="timeout" ng-model="timeout" type="text" placeholder="timeout (8000 ms)">
+            <input id="maximumAge" ng-model="maximumAge" type="text" placeholder="maximumAge (0 ms)">
         </div>
     </div>
     <div class="searchBox">

@@ -23,6 +23,38 @@ angular.module("geoapp")
     };
     
     /*
+     * initHybridMap
+     * Initializes and shows the map with Tiles from OpenStreetMap
+     */
+    this.initHybridMap = function (mapId) {
+        /* Set GoogleMap options */
+        var mapOptions = {
+            zoom: DefaultConfig.defaultZoom,
+            mapTypeId: "OSM",
+            mapTypeControl: false, // disable user toggling between map types (such as ROADMAP and SATELLITE)
+            streetViewControl: false // disable Google StreetView
+        };
+
+        /* Initialize superclass attributes */
+        map = new google.maps.Map(document.getElementById(mapId), mapOptions);
+
+        /* Define OSM map type pointing at the OpenStreetMap tile server */
+        map.mapTypes.set("OSM", new google.maps.ImageMapType({
+            getTileUrl: function(coord, zoom) {
+                return "http://tile.openstreetmap.org/" + zoom + "/" + coord.x + "/" + coord.y + ".png";
+            },
+            tileSize: new google.maps.Size(256, 256),
+            name: "OpenStreetMap",
+            maxZoom: 18
+        }));
+        
+        /* Show the map */
+        var gmPosition = new google.maps.LatLng(DefaultConfig.defaultPosition.coords.latitude, DefaultConfig.defaultPosition.coords.longitude);
+        map.setCenter(gmPosition);
+        
+    };
+    
+    /*
      * initSearchBox
      * Initialize Google Search Box
      */
