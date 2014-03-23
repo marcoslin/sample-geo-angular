@@ -1,7 +1,7 @@
 angular.module("geoapp")
 
 // Create Map Utilities object
-.service("MapUtil", ['DefaultConfig', '$q', '$log', function (DefaultConfig, $q, $log) {
+.service("MapUtil", ['DefaultConfig', '$window', '$q', '$log', function (DefaultConfig, $window, $q, $log) {
     $log.log("[MapUtil] loaded.");
 
     // Get Position
@@ -20,20 +20,9 @@ angular.module("geoapp")
                 d.resolve(position);
             },
             function (error) {
-                // On Error
-                switch (error.code) {
-                    case 1: // PERMISSION_DENIED
-                        d.reject("geolocation permission denied");
-                        break;
-                    case 2: // POSITION_UNAVAILABLE
-                        d.reject("geolocation unavailable");
-                        break;
-                    case 3: // TIMEOUT
-                        d.reject("geolocation timeout");
-                        break;
-                    default: // Shouldn't happen
-                        d.reject("geolocation unexpected error with code: " + error.code);
-                }
+                var msg = error.message;
+                $window.alert(msg);
+                d.reject(msg);
             }
         );
         
