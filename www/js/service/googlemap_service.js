@@ -9,6 +9,9 @@ angular.module("geoapp")
         this.searchBox = undefined;
         this.marker = undefined;
         this.currentPosition = undefined;
+        
+        this.event_places_changed = undefined;
+        this.event_bounds_changed = undefined;
     };
     
     MapObject.prototype = {
@@ -41,15 +44,28 @@ angular.module("geoapp")
             this.searchBox = new google.maps.places.SearchBox(document.getElementById(inputId));
 
             /* Listen for the event fired when the user selects an item from the pick list. */
-            google.maps.event.addListener(this.searchBox, 'places_changed', function() {
+            this.event_places_changed = google.maps.event.addListener(this.searchBox, 'places_changed', function() {
+                $log.log("[" + self.name + "] .initSearchBox's places_changed event fired.");
                 searchCallback();
             });
 
             /* Bias the SearchBox results towards places that are within the bounds of the current map's viewport. */
-            google.maps.event.addListener(this.map, 'bounds_changed', function() {
+            this.event_bounds_changed = google.maps.event.addListener(this.map, 'bounds_changed', function() {
+                $log.log("[" + self.name + "] .initSearchBox's bounds_changed event fired.");
                 var bounds = self.map.getBounds();
                 self.searchBox.setBounds(bounds);
             });
+        },
+        
+        /*
+         * Deregister maps events
+         */
+        clearSearchBox: function () {
+            this.event_places_changed.remove();
+            this.event_places_changed = undefined;
+            
+            this.event_bounds_changed.remove();
+            this.event_bounds_changed = undefined;
         },
         
         /*
@@ -61,7 +77,7 @@ angular.module("geoapp")
             var places = this.searchBox.getPlaces(),
                 place = places[0];
 
-            $log.log("[" + this.name + "] search called with place: ", place);
+            $log.log("[" + this.name + "] .search called with place: ", place);
 
             // Clear the previous marker if set
             if (this.marker) {

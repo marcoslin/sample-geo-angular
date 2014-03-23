@@ -12,7 +12,13 @@ angular.module("geoapp")
         $log.log("[GoogleMapController] searchAction called.");
         GoogleMap.search();
     };
+    
     GoogleMap.initSearchBox("searchAddress", searchAction);
+    
+    $scope.$on("$destroy", function () {
+        $log.log("[GoogleMapController] seachBox cleanup");
+        GoogleMap.clearSearchBox();
+    });
     
     // Define getGeolocation
     $scope.getGeolocation = function () {

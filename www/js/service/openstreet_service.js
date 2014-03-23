@@ -130,7 +130,7 @@ angular.module("geoapp")
         /* Set the center of the map */
         map.setCenter(osmPosition, DefaultConfig.defaultZoom);
 
-        if (currentPosition === null) { // if this is the first time this method is invoked
+        if (typeof currentPosition === "undefined") { // if this is the first time this method is invoked
 
             /* Add a marker to the center */
             markers.addMarker(new OpenLayers.Marker(osmPosition));

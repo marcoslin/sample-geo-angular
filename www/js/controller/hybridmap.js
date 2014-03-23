@@ -13,6 +13,11 @@ angular.module("geoapp")
     };
     HybridMap.initSearchBox("searchAddress", searchAction);
     
+    $scope.$on("$destroy", function () {
+        $log.log("[HybridMapController] seachBox cleanup");
+        HybridMap.clearSearchBox();
+    });
+    
     // Define getGeolocation
     $scope.getGeolocation = function () {
         $scope.getPosition($scope.enableHighAccuracy, $scope.timeout, $scope.maximumAge).then(function (position) {
