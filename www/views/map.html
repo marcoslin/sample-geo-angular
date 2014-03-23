@@ -2,11 +2,11 @@
     <div class="tabs">
         <ul>
             <li>
-                <a id="showOpenStreetMap" ng-class="fs.showOpenStreetMap_class" href="#/showOpenStreetMap">OpenStreetMap</a>
+                <a id="showOpenStreetMap" ng-class="mapfs.OpenStreetMap_class" href="#/showOpenStreetMap">OpenStreetMap</a>
             </li><li>
-                <a id="showGoogleMap" ng-class="fs.showGoogleMap_class" href="#/showGoogleMap">GoogleMap</a>
+                <a id="showGoogleMap" ng-class="mapfs.GoogleMap_class" href="#/showGoogleMap">GoogleMap</a>
             </li><li>
-                <a id="showHybridMap" ng-class="fs.showHybridMap_class" href="#/showHybridMap">HybridMap</a>
+                <a id="showHybridMap" ng-class="mapfs.HybridMap_class" href="#/showHybridMap">HybridMap</a>
             </li>
         </ul>
     </div>
@@ -30,5 +30,3 @@
         <button ng-hide="fs.hideButton" ng-click="searchAction()">Search</button>
     </div>
 </div>
-
-<div id="mapCanvas" ng-class="fs.map_class"></div>

@@ -3,7 +3,7 @@ angular.module("geoapp")
     var self = this,
         map, mapnik,
         fromProjection, toProjection,
-        markers;
+        markers, currentPosition;
     
     /*
      * initMap
@@ -111,6 +111,37 @@ angular.module("geoapp")
             markers.addMarker(marker);
         }
 
-    }
+    };
+
+    /*
+     * showPosition
+     * Show the specified position on the map
+     * @param {Position} position
+     */
+    this.showPosition = function(position) {
+
+        /* Retrieve longitude and latitude from Position */
+        var plon = position.coords.longitude;
+        var plat = position.coords.latitude;
+
+        /* Calculate the OpenStreetMap position */
+        var osmPosition = new OpenLayers.LonLat(plon, plat).transform(fromProjection, toProjection);
+
+        /* Set the center of the map */
+        map.setCenter(osmPosition, DefaultConfig.defaultZoom);
+
+        if (currentPosition === null) { // if this is the first time this method is invoked
+
+            /* Add a marker to the center */
+            markers.addMarker(new OpenLayers.Marker(osmPosition));
+
+            /* Show POIs only the first time this method is called */
+            self.showPOIs(new OpenLayers.LonLat(plon, plat));
+
+            /* Keep track of the current position */
+            currentPosition = osmPosition;
+        }
+
+    };
     
 }]);

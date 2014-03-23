@@ -11,8 +11,15 @@
     </head>
     <body ng-app="geoapp">
         
-        <div ng-view class="maps"></div>
-
+        <div ng-controller="MapController">
+            <div ng-view></div>
+            <div class="maps">
+                <div id="openstreetmap" ng-class="mapfs.OpenStreetMap_class"></div>
+                <div id="googlemap" ng-class="mapfs.GoogleMap_class"></div>
+                <div id="hybridmap" ng-class="mapfs.HybridMap_class"></div>
+            </div>
+        </div>
+        
         <script src="http://openlayers.org/api/OpenLayers.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
         
@@ -21,11 +28,11 @@
         
         <script src="js/app.js"></script>
         
+        <script src="js/service/maputil_service.js"></script>
         <script src="js/service/openstreet_service.js"></script>
         <script src="js/service/googlemap_service.js"></script>
-        <script src="js/service/geoloc_service.js"></script>
         
-        
+        <script src="js/controller/map.js"></script>
         <script src="js/controller/openstreetmap.js"></script>
         <script src="js/controller/googlemap.js"></script>
         <script src="js/controller/hybridmap.js"></script>

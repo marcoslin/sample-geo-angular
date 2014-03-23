@@ -1,21 +1,11 @@
 angular.module("geoapp")
-.controller('OpenStreetMapController', ['$scope', 'OpenStreetMap', 'Geolocation', 'DefaultConfig', '$window', '$log', function ($scope, OpenStreetMap, Geolocation, DefaultConfig, $window, $log) {
+.controller('OpenStreetMapController', ['$scope', 'OpenStreetMap', '$window', '$log', function ($scope, OpenStreetMap, $window, $log) {
     // Set the form status
     $scope.fs = {
         hideButton: false,
         autocomplete: "on",
         showOpenStreetMap_class: "active",
         map_class: "openstreetmap"
-    };
-
-    // Set default value
-    $scope.enableHighAccuracy = DefaultConfig.defaultEnableHighAccuracy;
-    
-    // Define geoloc
-    $scope.getGeolocation = function () {
-        Geolocation.getPosition($scope.enableHighAccuracy, $scope.timeout, $scope.maximumAge).then(function (position) {
-            $log.log("getPosition: ", position);
-        });
     };
     
     // Search
@@ -29,5 +19,14 @@ angular.module("geoapp")
         }
     };
     
-    OpenStreetMap.initMap("mapCanvas");
+    // Define getGeolocation
+    $scope.getGeolocation = function () {
+        $scope.getPosition($scope.enableHighAccuracy, $scope.timeout, $scope.maximumAge).then(function (position) {
+            OpenStreetMap.showPosition(position);
+        });
+    };
+    
+    // Call showMap defined in the parent MapController
+    $scope.showMap("openstreetmap");
+    
 }]);

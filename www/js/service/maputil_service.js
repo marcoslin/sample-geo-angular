@@ -1,8 +1,10 @@
 angular.module("geoapp")
-.service('Geolocation', ['DefaultConfig', '$q', function (DefaultConfig, $q) {
-    
-    var options = {};
 
+// Create Map Utilities object
+.service("MapUtil", ['DefaultConfig', '$q', '$log', function (DefaultConfig, $q, $log) {
+    $log.log("[MapUtil] loaded.");
+
+    // Get Position
     this.getPosition = function (enableHighAccuracyInput, timeout, maximumAge) {
         var d = $q.defer();
         
@@ -20,16 +22,16 @@ angular.module("geoapp")
             function (error) {
                 // On Error
                 switch (error.code) {
-                    case 1: //PERMISSION_DENIED
+                    case 1: // PERMISSION_DENIED
                         d.reject("geolocation permission denied");
                         break;
-                    case 2: //POSITION_UNAVAILABLE
+                    case 2: // POSITION_UNAVAILABLE
                         d.reject("geolocation unavailable");
                         break;
-                    case 3: //TIMEOUT
+                    case 3: // TIMEOUT
                         d.reject("geolocation timeout");
                         break;
-                    default: //Shouldn't happen
+                    default: // Shouldn't happen
                         d.reject("geolocation unexpected error with code: " + error.code);
                 }
             }
@@ -38,4 +40,10 @@ angular.module("geoapp")
         return d.promise;
     };
     
-}]);
+    // Expouse Default
+    this.DefaultConfig = DefaultConfig;
+    
+}])
+
+// End
+;

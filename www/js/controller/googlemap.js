@@ -1,28 +1,27 @@
 angular.module("geoapp")
-.controller('GoogleMapController', ['$scope', 'GoogleMap', 'Geolocation', 'DefaultConfig', '$log', function ($scope, GoogleMap, Geolocation, DefaultConfig, $log) {
+.controller('GoogleMapController', ['$scope', 'GoogleMap', '$log', function ($scope, GoogleMap, $log) {
+    $log.log("[GoogleMapController] loaded.");
     // Set the form status
     $scope.fs = {
         hideButton: true,
         autocomplete: "off",
-        showGoogleMap_class: "active"
     };
     
-    // Set default value
-    $scope.enableHighAccuracy = DefaultConfig.defaultEnableHighAccuracy;
+    // Configure Search
+    function searchAction() {
+        $log.log("[GoogleMapController] searchAction called.");
+        GoogleMap.search();
+    };
+    GoogleMap.initSearchBox("searchAddress", searchAction);
     
-    // Define geoloc
+    // Define getGeolocation
     $scope.getGeolocation = function () {
-        Geolocation.getPosition($scope.enableHighAccuracy, $scope.timeout, $scope.maximumAge).then(function (position) {
-            $log.log("getPosition: ", position);
+        $scope.getPosition($scope.enableHighAccuracy, $scope.timeout, $scope.maximumAge).then(function (position) {
+            GoogleMap.showPosition(position);
         });
     };
     
-    // Define search
-    function searchAction() {
-        GoogleMap.search();
-    };
-    
-    GoogleMap.initMap("mapCanvas");
-    GoogleMap.initSearchBox("searchAddress", searchAction);
+    // Call showMap defined in the parent MapController
+    $scope.showMap("googlemap");
     
 }]);

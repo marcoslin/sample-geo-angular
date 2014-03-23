@@ -1,29 +1,25 @@
 angular.module("geoapp")
-.controller('HybridMapController', ['$scope', 'GoogleMap', 'Geolocation', 'DefaultConfig', '$log', function ($scope, GoogleMap, Geolocation, DefaultConfig, $log) {
+.controller('HybridMapController', ['$scope', 'HybridMap', '$log', function ($scope, HybridMap, $log) {
     $log.log("[HybridMapController] loaded.");
     // Set the form status
     $scope.fs = {
         hideButton: true,
-        autocomplete: "off",
-        showHybridMap_class: "active"
+        autocomplete: "off"
     };
     
-    // Set default value
-    $scope.enableHighAccuracy = DefaultConfig.defaultEnableHighAccuracy;
+    // Configure Search
+    function searchAction() {
+        HybridMap.search();
+    };
+    HybridMap.initSearchBox("searchAddress", searchAction);
     
-    // Define geoloc
+    // Define getGeolocation
     $scope.getGeolocation = function () {
-        Geolocation.getPosition($scope.enableHighAccuracy, $scope.timeout, $scope.maximumAge).then(function (position) {
-            $log.log("getPosition: ", position);
+        $scope.getPosition($scope.enableHighAccuracy, $scope.timeout, $scope.maximumAge).then(function (position) {
+            HybridMap.showPosition(position);
         });
     };
     
-    // Define search
-    function searchAction() {
-        GoogleMap.search();
-    };
-    
-    GoogleMap.initHybridMap("mapCanvas");
-    GoogleMap.initSearchBox("searchAddress", searchAction);
-    
+    // Call showMap defined in the parent MapController
+    $scope.showMap("hybridmap");
 }]);
