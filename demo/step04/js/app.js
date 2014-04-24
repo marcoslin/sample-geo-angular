@@ -2,7 +2,6 @@
     var app = angular.module("webapp", ['ngRoute']);
 
     /**
-     * UNCHANGED
      * Define Routes that binds View to a Controller
      */
     app.config(function ($routeProvider) {
@@ -18,6 +17,7 @@
     app.factory("ComplexData", function ($q, $timeout) {
         var complexObj = function () {};
         
+        // Reply with message after waitMSecs
         complexObj.prototype.get = function (message, waitMSecs) {
             var d = $q.defer();
             
@@ -31,6 +31,7 @@
             return d.promise;
         };
         
+        // Raise Error
         complexObj.prototype.error = function (errMessage) {
             var d = $q.defer(),
                 waitMSecs = 500;
@@ -61,7 +62,8 @@
             
             ComplexData.get("Very first message").then(function (message) {
                 $scope.messages.push(message);
-                return ComplexData.get("Second message with a fast follow up", 1000);
+                return ComplexData.error("An Expected Error");
+                // return ComplexData.get("Second message with a fast follow up", 1000);
             }).then(function (message) {
                 $scope.messages.push(message);
                 return "A fast follow message without promise";
