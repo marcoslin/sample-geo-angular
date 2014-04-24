@@ -17,7 +17,8 @@
     app.service("SimpleData", function () {
         var now = new Date();
         this.state = now.getSeconds();
-        // this.state = 123;
+        
+        // .service automatically returns `this`
     });
     
     /**
