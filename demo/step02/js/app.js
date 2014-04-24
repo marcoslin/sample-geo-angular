@@ -2,7 +2,6 @@
     var app = angular.module("webapp", ['ngRoute']);
 
     /**
-     * UNCHANGED
      * Define Routes that binds View to a Controller
      */
     app.config(function ($routeProvider) {
@@ -12,46 +11,27 @@
         .otherwise({redirectTo: "/home"})
     });
 
-    
     /**
-     * CHANGED .state to become a counter and added .add method
      * Define a Service to be used by Controller
      */
     app.service("SimpleData", function () {
-        this.state = 0;
+        var now = new Date();
+        this.state = now.getSeconds();
         
-        this.add = function () {
-            this.state += 1;
-        }
-        
-        // .service automatically retunr `this`
+        // .service automatically returns `this`
     });
     
     /**
-     * NEW Root Controller.  Set initial state and update it when .add is called.
-     */
-    app.controller("RootCtrl", function ($scope, SimpleData) {
-        $scope.rootMessage = "scope_id " + $scope.$id;
-        $scope.state = SimpleData.state;
-        
-        $scope.add = function () {
-            SimpleData.add();
-            $scope.state = SimpleData.state;
-        }
-    });
-
-    /**
-     * NEW: No longer injecting SimpleData
      * Create controllers
      */
-    app.controller("HomeCtrl", function ($scope) {
-        $scope.message = "scope_id " + $scope.$id;
+    app.controller("HomeCtrl", function ($scope, SimpleData) {
         $scope.title = "Home Page";
+        $scope.state = SimpleData.state;
     });
     
-    app.controller("OneCtrl", function ($scope) {
-        $scope.message = "scope_id " + $scope.$id;
+    app.controller("OneCtrl", function ($scope, SimpleData) {
         $scope.title = "This is Page ONE";
+        $scope.state = SimpleData.state;
     });
 
 })();

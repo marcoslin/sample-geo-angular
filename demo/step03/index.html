@@ -6,7 +6,9 @@
     </head>
 
     <body>
-        <div data-ng-view></div>
+        <div data-ng-controller="RootCtrl">
+            <div data-ng-view></div>
+        </div>
 
         <script src="js/ext/angular.js"></script>
         <script src="js/ext/angular-route.js"></script>

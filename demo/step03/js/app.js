@@ -8,74 +8,50 @@
     app.config(function ($routeProvider) {
         $routeProvider
         .when("/home", { templateUrl: "view/home.html", controller: "HomeCtrl" })
+        .when("/one", { templateUrl: "view/page-one.html", controller: "OneCtrl" })
         .otherwise({redirectTo: "/home"})
     });
 
     
     /**
+     * CHANGED .state to become a counter and added .add method
      * Define a Service to be used by Controller
      */
-    app.factory("ComplexData", function ($q, $timeout) {
-        var complexObj = function () {};
+    app.service("SimpleData", function () {
+        this.state = 0;
         
-        complexObj.prototype.get = function (message, waitMSecs) {
-            var d = $q.defer();
-            
-            message = message || "Message from ComplexData";
-            waitMSecs = waitMSecs || 500;
-            
-            $timeout(function () {
-                d.resolve(message);
-            }, waitMSecs);
-
-            return d.promise;
-        };
-        
-        complexObj.prototype.error = function (errMessage) {
-            var d = $q.defer(),
-                waitMSecs = 500;
-            
-            errMessage = errMessage || "Error Message";
-            
-            $timeout(function () {
-                d.reject(errMessage);
-            }, waitMSecs);
-
-            return d.promise;
+        this.add = function () {
+            this.state += 1;
         }
         
-        
-        return new complexObj();
-        
+        // .service automatically retunr `this`
     });
     
+    /**
+     * NEW Root Controller.  Set initial state and update it when .add is called.
+     */
+    app.controller("RootCtrl", function ($scope, SimpleData) {
+        $scope.rootMessage = "scope_id " + $scope.$id;
+        $scope.state = SimpleData.state;
+        
+        $scope.add = function () {
+            SimpleData.add();
+            $scope.state = SimpleData.state;
+        }
+    });
 
     /**
      * NEW: No longer injecting SimpleData
      * Create controllers
      */
-    app.controller("HomeCtrl", function ($scope, ComplexData) {
-        $scope.getData = function () {
-            $scope.messages = [];
-            $scope.errorMessage = "";
-            
-            ComplexData.get("Very first message").then(function (message) {
-                $scope.messages.push(message);
-                return ComplexData.get("Second message with a fast follow up", 1000);
-            }).then(function (message) {
-                $scope.messages.push(message);
-                return "A fast follow message without promise";
-            }).then(function (message) {
-                $scope.messages.push(message);
-                return ComplexData.get("The Final Message", 2000);
-            }).then(function (message) {
-                $scope.messages.push(message);
-                return ComplexData.error("An Expected Error");
-            }).catch(function (message) {
-                $scope.errorMessage = message;
-            });
-        };
-
+    app.controller("HomeCtrl", function ($scope) {
+        $scope.message = "scope_id " + $scope.$id;
+        $scope.title = "Home Page";
+    });
+    
+    app.controller("OneCtrl", function ($scope) {
+        $scope.message = "scope_id " + $scope.$id;
+        $scope.title = "This is Page ONE";
     });
 
 })();

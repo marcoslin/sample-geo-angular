@@ -1,18 +1,15 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
     <head>
         <link rel="stylesheet" href="css/style.css" />
     </head>
-
+    
     <body>
+        <div id="map-canvas"></div>
+        <br>
+        <button onclick="addPOI()">Add POI</button>
         
-        <div data-ng-view></div>
-
-        <script src="js/ext/angular.js"></script>
-        <script src="js/ext/angular-route.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
         <script src="js/app.js"></script>
     </body>
-
 </html>
-
-<!-- Hint: ng-app -->
