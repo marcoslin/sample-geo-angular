@@ -62,8 +62,7 @@
             
             ComplexData.get("Very first message").then(function (message) {
                 $scope.messages.push(message);
-                return ComplexData.error("An Expected Error");
-                // return ComplexData.get("Second message with a fast follow up", 1000);
+                return ComplexData.get("Second message with a fast follow up", 1000);
             }).then(function (message) {
                 $scope.messages.push(message);
                 return "A fast follow message without promise";
