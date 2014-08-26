@@ -18,8 +18,8 @@ Here is command line used to create the directory structure above:
 ```
 mkdir sample-geo-angular
 cd sample-geo-angular
-git clone git@github.com:marcoslin/sample-geo-angular.git master
-git clone -b gh-pages --single-branch git@github.com:marcoslin/sample-geo-angular.git gh-pages
+git clone https://github.com/marcoslin/sample-geo-angular.git master
+git clone -b gh-pages --single-branch https://github.com/marcoslin/sample-geo-angular.git gh-pages
 ```
 
 Once project has been cloned, do:
